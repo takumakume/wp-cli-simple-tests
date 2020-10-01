@@ -24,3 +24,7 @@ wp-cliのテストフレームワークである [wp-cli-tests](https://github.c
 ### テストケースを変更したい
 
 `features/testing.feature` を修正する。
+
+### wp-cli のバージョンを変更したい
+
+`composer.json` の `wp-cli/wp-cli` のバージョンを変更し、 `composer update` を行う。
