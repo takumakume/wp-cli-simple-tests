@@ -1,4 +1,4 @@
-# wp-cli-simple-tests
+# wp-cli-simple-tests [![Build Status](https://travis-ci.com/takumakume/wp-cli-simple-tests.svg?branch=master)](https://travis-ci.com/takumakume/wp-cli-simple-tests)
 
 [wp-cli/wp-cli](https://github.com/wp-cli/wp-cli) の動作テストを行うリポジトリ。
 wp-cliのテストフレームワークである [wp-cli-tests](https://github.com/wp-cli/wp-cli-tests) を利用してテストを実装している。
