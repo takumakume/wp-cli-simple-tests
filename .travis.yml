@@ -1,0 +1,62 @@
+os: linux
+dist: xenial
+
+language: php
+php: 7.4
+
+services:
+  - mysql
+
+cache:
+  directories:
+    - $HOME/.composer/cache
+
+env:
+  global:
+    - PATH="$TRAVIS_BUILD_DIR/vendor/bin:$PATH"
+    - WP_CLI_BIN_DIR="$TRAVIS_BUILD_DIR/vendor/bin"
+
+before_install:
+  - |
+    # Raise PHP memory limit to 2048MB
+    echo 'memory_limit = 2048M' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
+
+install:
+  - composer install
+  - composer prepare-tests
+
+script:
+  - composer behat || composer behat-rerun
+
+jobs:
+  include:
+  - stage: test
+    env: WP_VERSION=5.5.1
+  - stage: test
+    env: WP_VERSION=5.4.2
+  - stage: test
+    env: WP_VERSION=5.3.4
+  - stage: test
+    env: WP_VERSION=5.2.7
+  - stage: test
+    env: WP_VERSION=5.1.6
+  - stage: test
+    env: WP_VERSION=5.0.10
+  - stage: test
+    env: WP_VERSION=4.9.15
+  - stage: test
+    env: WP_VERSION=4.8.14
+  - stage: test
+    env: WP_VERSION=4.7.18
+  - stage: test
+    env: WP_VERSION=4.6.19
+  - stage: test
+    env: WP_VERSION=4.5.22
+  - stage: test
+    env: WP_VERSION=4.4.23
+  - stage: test
+    env: WP_VERSION=4.3.24
+  - stage: test
+    env: WP_VERSION=4.2.28
+  - stage: test
+    env: WP_VERSION=4.1.31
